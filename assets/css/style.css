@@ -1,0 +1,37 @@
+body {
+    background-color: beige;
+}
+
+.conteudo-principal h1 {
+    text-align: center;
+}
+
+.conteudo-principal {
+    margin-top: 2em;
+   
+}
+
+/* .card-transmissao .card-alinhamento {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20em;
+    margin-right: 20em;
+} */
+
+@media (max-width:500px) {
+    .conteudo-principal a {
+        display: flex;
+        margin: 0.5em;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    .conteudo-principal {
+        margin-top: 2em;
+    }
+    /* .card-transmissao .card-alinhamento {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0em;
+        margin-right: 0em;
+    } */
+}

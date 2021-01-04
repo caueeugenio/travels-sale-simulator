@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de contratação de passagens</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav></nav>
+    </header>
+    <section class="conteudo-principal">
+        <h1 class="display-4 pb-4">Simulador de compra para Passagens Aéreas</h1>
+
+        <div class="card text-center ">
+            <div class="card-header">
+                Transmissão de passagem aérea
+            </div>
+            <div class="card-body card-transmissao ">
+                <!-- <h5 class="card-title">Transmissão de passagem</h5> -->
+
+                <form action="" method="POST">
+
+                    <p class="card-text card-alinhamento">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Nome do comprador:</span>
+                        </div>
+                        <input required id="nomeComprador" type="text" class="form-control de" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <!-- <label>Nome do comprador:</label>
+                    <input class="form-control" type="text" id="nomeComprador"> -->
+
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Idade do comprador:</span>
+                        </div>
+                        <input id="idadeComprador" type="text" class="form-control" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <!-- <label>Idade do comprador:</label>
+                    <input class="form-control" type="text" id="idadeComprador"> -->
+                    <label class="input-group-text" id>Destino:</label>
+                    <select id="destinoComprador" class="custom-select">
+                        <option value=""></option>
+                        <option value="São Paulo">São Paulo</option>
+                        <option value="Rio de Janeiro">Rio de Janeiro</option>
+                        <option value="Salvador">Salvador</option>
+                        <option disabled value="São Paulo">Recife</option>
+                        <option disabled value="São Paulo">Minas Gerais</option>
+                    </select>
+
+
+
+                    </p>
+
+
+
+                    <p class="card-text ">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Dt. Ida:</span>
+                        </div>
+                        <input id="data-ida-comprador" type="date" class="form-control" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Dt. Volta:</span>
+                        </div>
+                        <input id="data-volta-comprador" type="date" class="form-control" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <!-- <label>Dt. Ida:</label>
+                        <input class="form-control" type="date" id="data-ida-comprador"> -->
+                    <!-- <label>Dt. Volta:</label>
+                        <input class="form-control" type="date" id="data-volta-comprador"> -->
+
+
+                    </p>
+                    <p class="card-text">
+
+
+                        <!-- <input id="radioOption" name="radioType" type="radio" value="Sim"> Sim -->
+
+
+                    <div class="input-group ">
+                        <label id="acompanhamento" class="input-group-text">Está acompanhado: </label>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input name="radioType" id="radioOption" type="radio"
+                                    aria-label="Radio button for following text input" value="Sim"> Sim
+                            </div>
+                        </div>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input name="radioType" id="radioOption" type="radio"
+                                    aria-label="Radio button for following text input" value="Não"> Não
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- <input id="radioOption" name="radioType" type="radio" value="Não"> Não -->
+
+                    </p>
+                    <p style="font-size: 10pt;"><i>*Menores de idade só podem comprar passagem mediante a estarem
+                            acompanhados por maior de idade.</i></p>
+
+                    <a onclick="comprarPassagem()" class="button-style btn btn-success Submit"
+                        style="color: white;">Efetuar
+                        compra</a>
+
+                </form>
+            </div>
+            <div class="card-footer text-muted destinos-disponiveis">
+                <p class="card-text">Destinos disponíveis:
+                    <a class="btn btn-success" style="color: white;">São Paulo</a>
+                    <a class="btn btn-success" style="color: white;">Rio de Janeiro</a>
+                    <a class="btn btn-success" style="color: white;">Salvador</a>
+                    <a class="btn btn-danger" style="color: white;">Recife</a>
+                    <a class="btn btn-danger" style="color: white;">Minas Gerais</a>
+                </p>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog " role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Compra efetuada com sucesso!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button style="color-red">
+                    </div>
+                    <div class="modal-body">
+                        <b>Parabéns <label id="nome">Nome do comprador</label>!</b>
+                        <br>
+                        Você acaba de comprar uma passagem para <label id="destino">Destino</label>.
+                        <br>
+                        Data de ida: <label id="dataida"></label>
+                        <br>
+                        Data de volta: <label id="datavolta"></label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        </div>
+
+        <div class="informacao-compra">
+            <p class="text-center" id="mensagemExibicao"></p>
+        </div>
+    </section>
+
+    <!-- SCRIPTS -->
+
+    <!-- BOOTSTRAP4 SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP SCRITPS END -->
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>
